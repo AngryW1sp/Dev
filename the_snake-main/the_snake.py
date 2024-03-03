@@ -44,7 +44,7 @@ clock = pygame.time.Clock()
 
 class GameObject:
 
-    def __init__(self, body_color) -> None:
+    def __init__(self, body_color=None) -> None:
         self.body_color = body_color
         self.position = SCREEN_CENTRE
 
@@ -54,7 +54,7 @@ class GameObject:
 
 class Apple(GameObject):
 
-    def __init__(self) -> None:
+    def __init__(self, body_color=APPLE_COLOR) -> None:
         self.body_color = APPLE_COLOR
         self.position = self.randomize_position()
 
@@ -72,9 +72,9 @@ class Apple(GameObject):
 
 class Snake(GameObject):
 
-    def __init__(self) -> None:
+    def __init__(self, body_color=SNAKE_COLOR) -> None:
+        super().__init__(body_color)
         self.position = SCREEN_CENTRE
-        self.body_color = SNAKE_COLOR
         self.positions = [self.position]
         self.length = 1
         self.direction = RIGHT
